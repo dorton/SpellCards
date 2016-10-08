@@ -2,7 +2,11 @@
 
 <h1>Words</h1>
 
-
+<% @words.each do |word| %>
+  <ul>
+    <li><%= link_to word.letters, word_path(word), class: "btn btn-primary" %></li>
+  </ul>
+<% end %>
 
 <br>
 
