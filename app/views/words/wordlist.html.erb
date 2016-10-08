@@ -1,0 +1,24 @@
+
+<div class="article">
+  <table>
+    <thead>
+      <tr>
+        <th>Word</th>
+        <th>Week</th>
+        <th>Action</th>
+      </tr>
+      <% @words.each do |word| %>
+      <tr>
+        <td><%= word.letters %></td>
+        <td><%= word.week.start_date %></td>
+        <td><%= link_to "Edit", edit_word_path(word), class: "btn black" %></td>
+        <td><%= link_to "Delete", word_path(word), class: "btn black",
+                      method: :delete,
+                      data: { confirm: 'Are you sure?' }  %></td>
+      </tr>
+      <% end %>
+    </thead>
+  </table>
+  <br>
+  <%= link_to "Add Words", new_word_path, class: "btn black" %>
+</div>

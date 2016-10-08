@@ -1,13 +1,36 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Words</h1>
+<div class="article">
+  <div class="main_header">
+    <div class="row">
+      <div class="col l12"> <h4>Spelling Words for Week of <%= @current_week.start_date.strftime('%B %d, %Y') %></h4></div>
+    </div>
+  </div>
 
-<% @words.each do |word| %>
-  <ul>
-    <li><%= link_to word.letters, word_path(word), class: "btn btn-primary" %></li>
-  </ul>
-<% end %>
+
+
+<div class="main_content">
+    <div class="row">
+      <% @current_weeks_words.each do |word| %>
+    <div class="col s12 m4 l4">
+      <div class="card hoverable">
+        <div class="flip-container" ontouchstart="this.classList.toggle('hover');">
+          <div class="flipper">
+            <div class="card-image face front"><%= image_tag word.pic, class: "responsive-img" %></div>
+            <div class="card-content face back"><h2><%= word.letters %></h2></div>
+          </div>
+        </div>
+        <div class="card-action center-align say"><a class="btn black" href="">Say Word</a></div>
+      </div>
+    </div>
+    <% end %>
+  </div>
+</div>
+
+
+
 
 <br>
 
 <%= link_to 'New Word', new_word_path %>
+</div>
