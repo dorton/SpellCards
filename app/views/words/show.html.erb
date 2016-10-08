@@ -1,13 +1,15 @@
 <p id="notice"><%= notice %></p>
 
-<h1><%= @word.letters %></h1>
+<div class="article">
+  <h1><%= @word.letters %></h1>
 
-<div class="image">
-  <%= image_tag @word.pic %>
+  <div class="show-image">
+    <%= image_tag @word.pic %>
+  </div>
+
+  <%= link_to 'Edit', edit_word_path(@word) %> |
+  <%= link_to 'Back', words_path %> |
+  <%= link_to "Delete", word_path(@word),
+                method: :delete,
+                data: { confirm: 'Are you sure?' } %>
 </div>
-
-<%= link_to 'Edit', edit_word_path(@word) %> |
-<%= link_to 'Back', words_path %> |
-<%= link_to "Delete", word_path(@word),
-              method: :delete,
-              data: { confirm: 'Are you sure?' } %>

@@ -23,6 +23,7 @@
         <!-- Dropdown Structure -->
         <ul id='dropdown1' class='dropdown-content'>
           <li><%= link_to "All Words", wordlist_path %></li>
+          <li><%= link_to "Add New Words", new_word_path %></li>
           <li class="divider"></li>
           <li><h5>Weeks</h5></li>
           <% Week.all.each do |week| %>
@@ -33,6 +34,7 @@
     <ul class="side-nav" id="mobile-demo">
         <li><a href="#"><i class="material-icons">search</i></a></li>
         <li><%= link_to "All Words", wordlist_path %></li>
+        <li><%= link_to "Add New Words", new_word_path %></li>
       </ul>
   </div>
 </nav>
