@@ -1,9 +1,11 @@
 
 <div class="article">
-  <h1>New Word</h1>
+  <h1>Add a New Word for a Week</h1>
 
   <%= render 'form', word: @word %>
 <br>
+
+<h2> <%= link_to "New Week?", new_week_path %></h2>
   <%= link_to 'Back', words_path %>
 
 </div>

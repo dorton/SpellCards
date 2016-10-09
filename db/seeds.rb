@@ -7,7 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
-week = Week.create(start_date: '2016-10-09')
+week = Week.create(start_date: '2016-10-09', end_date: '2016-10-16')
 
 words = ['leg', 'dog', 'pen', 'duck', 'nest', 'den']
 

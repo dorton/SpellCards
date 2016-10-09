@@ -18,8 +18,8 @@ class WordsController < ApplicationController
 
   def index
     @words = Word.all
-    @current_weeks_words = Word.where(week_id: Week.last.id)
-    @current_week = Week.last
+    @current_week = Week.where('end_date >= ?', Date.today).where('start_date <= ?', Date.today).first
+    @current_weeks_words = Word.where(week_id: @current_week.id)
   end
 
 
@@ -28,6 +28,7 @@ class WordsController < ApplicationController
 
   def new
     @word = Word.new
+    @current_week = Week.where('end_date >= ?', Date.today).where('start_date <= ?', Date.today)
   end
 
   def edit

@@ -15,6 +15,7 @@ class WeeksController < ApplicationController
   # GET /weeks/new
   def new
     @week = Week.new
+    @current_week = Week.where('end_date >= ?', Date.today).where('start_date <= ?', Date.today)
   end
 
   # GET /weeks/1/edit

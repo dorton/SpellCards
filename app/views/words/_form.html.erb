@@ -2,5 +2,6 @@
 
 <%= simple_form_for @word do |f| %>
   <%= f.input :letters %>
-  <%= f.button :submit, class: "btn black" %>
+  <%= f.association :week, collection: Week.order(:start_date), prompt: "Choose a Week", label_method: :start_date, value_method: :id, include_blank: false  %>
+  <%= f.button :submit, class: "btn btn-success-outline" %>
 <% end %>
