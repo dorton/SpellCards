@@ -16,6 +16,28 @@ class WordsController < ApplicationController
     @words = Word.all
   end
 
+  def spellingbee
+    @spellingbeewords = Word.where(spelling_bee: true)
+  end
+
+  def randombeewords
+    @allspellingbeewords = Word.where(spelling_bee: true)
+    @spellingbeewords = @allspellingbeewords.last(10)
+  end
+
+  def newbee
+    @word = Word.new
+  end
+
+  def create_bee_words
+    @word = Word.new(word_params)
+    pic = GoogleCustomSearchApi.search(@word.letters, searchType: "image")
+    @word.pic = pic.items.first.link
+    @word.spelling_bee = true
+    @word.save
+    redirect_to spellingbee_path, notice: 'Spelling Bee Word was successfully created.'
+  end
+
   def index
     @words = Word.all
     @current_week = Week.where('end_date >= ?', Date.today).where('start_date <= ?', Date.today).first
