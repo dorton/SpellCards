@@ -1,6 +1,6 @@
 
-<div class="article">
-  <table>
+<div class="container">
+  <table class="table table-bordered">
     <thead>
       <tr>
         <th>Word</th>
@@ -11,8 +11,8 @@
       <tr>
         <td><%= link_to word.letters, word_path(word) %></td>
         <td><%= word.week.start_date.strftime('%B %d, %Y') %></td>
-        <td><%= link_to "Edit", edit_word_path(word), class: "btn black" %></td>
-        <td><%= link_to "Delete", word_path(word), class: "btn black",
+        <td><%= link_to "Edit", edit_word_path(word), class: "btn btn-outline-danger" %></td>
+        <td><%= link_to "Delete", word_path(word), class: "btn btn-outline-danger",
                       method: :delete,
                       data: { confirm: 'Are you sure?' }  %></td>
       </tr>

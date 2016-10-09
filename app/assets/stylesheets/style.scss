@@ -1,0 +1,210 @@
+@import "reset";
+
+* {
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-boz-sizing: border-box;
+}
+
+*:before, *:after {
+    box-sizing: inherit;
+    -webkit-box-sizing: inherit;
+    -moz-boz-sizing: inherit;
+}
+
+body {
+    // background: #ccc;
+    font-family: 'Roboto', sans-serif!important;
+    // font-family: "freight-sans-pro";
+    // line-height: 1.3;
+    // color: #004853;
+    /* hi */
+    /* Set the depth of the elements */
+}
+
+.container {
+    max-width: 1000px;
+    margin: 2.5rem auto;
+    clear: both;
+    overflow: hidden;
+    display: block;
+    padding: 0 1%;
+}
+
+h1 {
+    font-size: 4.6rem;
+    line-height: 4rem;
+}
+
+h2 {
+    font-size: 3rem;
+    margin: 50px 0 10px 0;
+    clear: both;
+}
+
+.card {
+    position: relative;
+    width: 32%;
+    float: left;
+    min-height: 14rem;
+    background: white;
+    cursor: pointer;
+    /* Set the transition effects */
+    -webkit-transition: -webkit-transform 0.4s;
+    -moz-transition: -moz-transform 0.4s;
+    -o-transition: -o-transform 0.4s;
+    transition: transform 0.4s;
+    -webkit-transform-style: preserve-3d;
+    -moz-transform-style: preserve-3d;
+    -o-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    margin-right: 2%;
+    margin-bottom: 25px;
+    div {
+        display: table;
+        position: absolute;
+        width: 100%;
+        height: 14em;
+        background: white;
+        -webkit-backface-visibility: hidden;
+        -moz-backface-visibility: hidden;
+        -o-backface-visibility: hidden;
+        backface-visibility: hidden;
+        // padding: 25px;
+    }
+    &:nth-of-type(3n) {
+        margin-right: 0;
+    }
+    .front {
+      img {
+        width: 100%; /* or any custom size */
+         height: 100%;
+         object-fit: contain;
+      }
+    }
+    .back {
+        -webkit-transform: rotateY(180deg);
+        -moz-transform: rotateY(180deg);
+        -o-transform: rotateY(180deg);
+        transform: rotateY(180deg);
+    }
+
+}
+
+.flipped {
+    transform: rotateY(-180deg);
+}
+
+h3 {
+    font-size: 2.5rem;
+    font-weight: 300;
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+    span {
+        font-weight: 600;
+    }
+}
+
+p {
+    font-size: 1.3rem;
+    font-weight: 300;
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+}
+
+em {
+    font-style: italic;
+    font-weight: 300;
+}
+
+.outer-resources, header {
+    padding: 20px;
+    background: url(../images/bg.jpg) center center;
+    background-size: cover;
+    clear: both;
+    color: #eee;
+    overflow: hidden;
+
+    h2 {
+        color: #eee;
+    }
+
+    ul, li {
+        list-style-type: disc;
+        margin-bottom: 10px;
+    }
+    a {
+        color: #eee;
+        text-decoration: none;
+        padding-bottom: 1px;
+        border-bottom: 1px #eee dotted;
+
+    }
+    .third {
+        width: 33.333%;
+        float: left;
+    &:nth-of-type(1) {
+        padding-left: 10%;
+    }
+    &:nth-of-type(3) {
+        padding-right: 10%;
+    }
+    p {
+        display: block;
+        width: 100%;
+        font-size: 1rem;
+        text-align: left;
+        vertical-align: top;
+        line-height: 1.5rem;
+        margin-bottom: 15px;
+
+    }
+    h3 {
+         text-align: left;
+        margin-top: 50px;
+         display: block;
+    }
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .card:nth-of-type(3n) {
+        margin-right: 2%;
+    }
+
+    .card {
+        margin-left: 2%;
+        width: 46%;
+    }
+}
+
+@media screen and (max-width: 600px) {
+
+    h1, h2 {
+        margin-left: 2%;
+    }
+    .card:nth-of-type(3n) {
+        margin-right: auto;
+    }
+
+    .card{
+    width: 96%;
+    float: none;
+    margin-right: auto;
+    margin-left: auto;
+    }
+
+// .outer-resources {
+//     .third {
+//         width: 100%;
+//     }
+//     &:nth-of-type(1) {
+//         padding-left: 2%;
+//     }
+//     &:nth-of-type(3) {
+//         padding-right: 2%;
+//     }
+// }
+}

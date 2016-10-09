@@ -7,21 +7,64 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.css" media="screen" title="no title">
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.js"></script>
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.css" media="screen" title="no title"> -->
+    <!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.js"></script> -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/masonry/3.2.2/masonry.pkgd.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/masonry/3.2.2/masonry.pkgd.js"></script> -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100" rel="stylesheet">
+    <!-- Bootstrap core CSS -->
+    <link href="http://v4-alpha.getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="http://v4-alpha.getbootstrap.com/examples/navbar/navbar.css" rel="stylesheet">
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="http://v4-alpha.getbootstrap.com/assets/js/ie10-viewport-bug-workaround.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
   </head>
 
-<nav>
-  <div class="nav-wrapper">
+
+    <div class="container">
+
+      <!-- .navbar -->
+      <nav class="navbar navbar-full">
+        <button class="navbar-toggler hidden-lg-up" type="button" data-toggle="collapse" data-target="#mainNavbarCollapse">
+        &#9776;
+        </button>
+        <%= link_to '<i class="material-icons">sort_by_alpha</i>| iSpellWords'.html_safe, root_path, class: "navbar-brand" %>
+        <div class="collapse navbar-toggleable-md" id="mainNavbarCollapse">
+          <ul class="nav navbar-nav pull-lg-right">
+            <li class="nav-item dropdown">
+              <a class="nav-link" id="navbarDropdown1" data-target="#" href="http://example.com" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">All Weeks</a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown1">
+                <% Week.all.each do |week| %>
+                  <li><%= link_to week.start_date.strftime('%B %d, %Y'), root_path, class: "dropdown-item" %></li>
+                <% end %>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <%= link_to "All Words", wordlist_path, class: "nav-link" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "Add New Word", new_word_path, class: "nav-link" %>
+            </li>
+
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </nav>
+      <!-- /.navbar -->
+
+
+
+<!-- <nav>
+  <div class="navbar">
     <%= link_to '<i class="material-icons">sort_by_alpha</i>| iSpellWords'.html_safe, root_path, class: "brand-logo" %>
     <a href="#" data-activates="mobile-demo" class="right button-collapse"><i class="material-icons">more_vert</i></a>
     <ul class="right hide-on-med-and-down">
       <li><a href="#"><i class="material-icons">search</i></a></li>
-        <!-- Dropdown Trigger -->
         <li><a class="dropdown-button" href="#!" data-activates="dropdown1"><i class="material-icons right">view_module</i></a></li>
-        <!-- Dropdown Structure -->
         <ul id='dropdown1' class='dropdown-content'>
           <li><%= link_to "All Words", wordlist_path %></li>
           <li><%= link_to "Add New Words", new_word_path %></li>
@@ -38,8 +81,14 @@
         <li><%= link_to "Add New Words", new_word_path %></li>
       </ul>
   </div>
-</nav>
+</nav> -->
   <body>
     <%= yield %>
   </body>
+  <!-- Bootstrap core JavaScript
+  ================================================== -->
+  <!-- Placed at the end of the document so the pages load faster -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script>window.jQuery || document.write<script src="http://v4-alpha.getbootstrap.com/assets/js/vendor/jquery.min.js"></script></script>
+  <script src="http://v4-alpha.getbootstrap.com/dist/js/bootstrap.min.js"></script>
 </html>
