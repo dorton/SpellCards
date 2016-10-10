@@ -14,7 +14,7 @@
    <%= form_tag import_words_path, multipart: true do %>
       <%= file_field_tag :file %>
       <br>
-      <%= submit_tag "Import CSV" %>
+      <%= submit_tag "Import CSV", class: "btn btn-info" %>
     <% end %>
   <br>
 <hr>
@@ -23,13 +23,15 @@
     <thead>
       <tr>
         <th>Word</th>
-        <th colspan="2">Action</th>
+        <th>Image</th>
+        <th>Action</th>
       </tr>
       <% @spellingbeewords.each do |word| %>
       <tr>
         <td><%= link_to word.letters, word_path(word) %></td>
-        <td><%= link_to "Edit", edit_word_path(word), class: "btn btn-outline-danger" %></td>
-        <td><%= link_to "Delete", word_path(word), class: "btn btn-outline-danger",
+        <td><%= image_tag word.pic, class: "table_pic img-responsive img-thumbnail" %></td>
+        <td><%= link_to "Edit", edit_word_path(word), class: "btn btn-info" %>
+            <%= link_to "Delete", word_path(word), class: "btn btn-danger",
                       method: :delete,
                       data: { confirm: 'Are you sure?' }  %></td>
       </tr>

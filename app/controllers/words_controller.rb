@@ -28,7 +28,7 @@ class WordsController < ApplicationController
 
   def randombeewords
     @allspellingbeewords = Word.where(spelling_bee: true)
-    @randomwords = Word.where(spelling_bee: true).limit(10).order("RANDOM()")
+    @randomwords = Word.where(spelling_bee: true).limit(6).order("RANDOM()")
   end
 
   def newbee

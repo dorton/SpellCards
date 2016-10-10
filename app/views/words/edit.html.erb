@@ -1,8 +1,15 @@
 
 <div class="article">
   <h1>Editing Word</h1>
+<br>
 
-  <%= render 'editform', word: @word %>
+<%= render 'editform', word: @word %></td>
+<div class="show-image">
+        <%= image_tag @word.pic %>
+      </div><h2><%= @word.letters %></h2></td>
+
+
+
 <br>
   <%= link_to 'Show', @word %> |
   <%= link_to 'Back', words_path %>

@@ -1,5 +1,10 @@
-<%= simple_form_for @word do |f| %>
-  <%= f.input :letters, :label => 'Word' %>
-  <%= f.input :spelling_bee, input_html: { :checked => true } %>
-  <%= f.button :submit, class: "btn black"  %>
-<% end %>
+
+<div class="row">
+  <div class="col-xs-6 col-sm-4 col-md-4">
+    <%= simple_form_for @word do |f| %>
+      <%= f.input :letters, :label => 'Word' %>
+      <%= f.input :spelling_bee, input_html: { :checked => true } %>
+      <%= f.button :submit, class: "btn btn-primary"  %>
+    <% end %>
+  </div>
+</div>

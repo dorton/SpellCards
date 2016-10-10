@@ -1,8 +1,10 @@
-
-
+<div class="row">
+  <div class="col-xs-6 col-sm-4 col-md-4">
 <%= simple_form_for @word do |f| %>
   <%= f.input :letters, :label => 'Word' %>
   <%= f.input :spelling_bee %>
   <%= f.association :week, collection: Week.order(:start_date), prompt: "Choose a Week", label_method: :start_date, value_method: :id, include_blank: false  %>
   <%= f.button :submit, class: "btn btn-success-outline" %>
 <% end %>
+</div>
+</div>

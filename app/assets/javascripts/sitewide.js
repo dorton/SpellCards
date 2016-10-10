@@ -16,5 +16,8 @@ $( document ).on('turbolinks:load', function() {
   // );
 
   // $('.dropdown-toggle').dropdown()
+  $('#refresh').click(function() {
+    location.reload();
+});
 
 })
