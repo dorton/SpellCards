@@ -17,26 +17,27 @@ class WordsController < ApplicationController
   end
 
   def spellingbee
+    @word = Word.new
     @spellingbeewords = Word.where(spelling_bee: true)
   end
 
   def randombeewords
     @allspellingbeewords = Word.where(spelling_bee: true)
-    @spellingbeewords = @allspellingbeewords.last(10)
+    @randomwords = @allspellingbeewords.last(10)
   end
 
   def newbee
     @word = Word.new
   end
 
-  def create_bee_words
+  def createbee
     @word = Word.new(word_params)
     pic = GoogleCustomSearchApi.search(@word.letters, searchType: "image")
     @word.pic = pic.items.first.link
-    @word.spelling_bee = true
     @word.save
     redirect_to spellingbee_path, notice: 'Spelling Bee Word was successfully created.'
   end
+
 
   def index
     @words = Word.all
@@ -62,7 +63,6 @@ class WordsController < ApplicationController
     pic = GoogleCustomSearchApi.search(@word.letters, searchType: "image")
     @word.pic = pic.items.first.link
     @word.save
-    Week.last.words << @word
     redirect_to @word, notice: 'Word was successfully created.'
   end
 
@@ -73,7 +73,7 @@ class WordsController < ApplicationController
 
   def destroy
     @word.destroy
-    redirect_to words_url, notice: 'Word was successfully destroyed.'
+    redirect_to spellingbee_path, notice: 'Word was successfully destroyed.'
   end
 
   private
@@ -84,6 +84,6 @@ class WordsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def word_params
-      params.fetch(:word, {}).permit(:letters, :pic, :week_id)
+      params.fetch(:word, {}).permit(:letters, :pic, :week_id, :spelling_bee)
     end
 end

@@ -22,6 +22,15 @@ body {
     /* Set the depth of the elements */
 }
 
+.container-fluid{
+  background-color: white;
+
+}
+
+.navbar-brand {
+  font-size: 30px!important;
+}
+
 .container {
     max-width: 1000px;
     margin: 2.5rem auto;
@@ -59,7 +68,7 @@ h2 {
     -o-transform-style: preserve-3d;
     transform-style: preserve-3d;
     margin-right: 2%;
-    margin-bottom: 25px;
+    margin-bottom: 80px;
     div {
         display: table;
         position: absolute;

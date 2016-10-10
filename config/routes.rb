@@ -6,8 +6,8 @@ Rails.application.routes.draw do
   get '/wordlist/', to: 'words#wordlist', as: 'wordlist'
   get '/spellingbee', to: 'words#spellingbee', as: 'spellingbee'
   get '/randombee', to: 'words#randombeewords', as: 'randombee'
-  get '/words/newbee', to: 'words#newbee', as: 'newbee'
-  post '/words', to: 'words#create_bee_words'
+  get '/newbee/new', to: 'words#newbee', as: 'newbee'
+  post '/newbee', to: 'words#createbee'
 
   post 'words/voice' => 'words#voice'
 end

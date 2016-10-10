@@ -1,6 +1,5 @@
 <%= simple_form_for @word do |f| %>
-  <%= f.input :letters %>
-  <%= f.input :pic %>
-  <%= f.input :spelling_bee, :value => true %>
+  <%= f.input :letters, :label => 'Word' %>
+  <%= f.input :spelling_bee, input_html: { :checked => true } %>
   <%= f.button :submit, class: "btn black"  %>
 <% end %>

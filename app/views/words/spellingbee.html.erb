@@ -3,6 +3,15 @@
 
 <div class="container">
   <h2>The Spelling Bee Words</h2>
+
+  <br>
+  <h1>Add a New Words to the Spelling Bee List</h1>
+
+  <%= render 'spellingbeeform', word: @word %>
+
+
+  <br>
+
   <table class="table table-bordered">
     <thead>
       <tr>
@@ -21,5 +30,5 @@
     </thead>
   </table>
   <br>
-  <%= link_to "Add Words", newbee_path, class: "btn btn-outline-danger" %>
+  <%= link_to "Add Bee Words", newbee_path, class: "btn btn-outline-danger" %>
 </div>
