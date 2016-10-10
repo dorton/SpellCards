@@ -4,6 +4,11 @@ class WordsController < ApplicationController
   after_filter :set_header, only: :voice
   include Webhookable
 
+  def import
+    Word.import(params[:file])
+    redirect_to spellingbee_path, notice: "Spelling Bee Words imported."
+  end
+
   def voice
     @word = Word.find(params[:id])
     response = Twilio::TwiML::Response.new do |r|
@@ -13,7 +18,7 @@ class WordsController < ApplicationController
   end
 
   def wordlist
-    @words = Word.all
+    @words = Word.joins(:week).all
   end
 
   def spellingbee
@@ -23,7 +28,7 @@ class WordsController < ApplicationController
 
   def randombeewords
     @allspellingbeewords = Word.where(spelling_bee: true)
-    @randomwords = @allspellingbeewords.last(10)
+    @randomwords = Word.where(spelling_bee: true).limit(10).order("RANDOM()")
   end
 
   def newbee

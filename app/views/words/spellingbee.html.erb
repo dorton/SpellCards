@@ -2,8 +2,6 @@
 
 
 <div class="container">
-  <h2>The Spelling Bee Words</h2>
-
   <br>
   <h1>Add a New Words to the Spelling Bee List</h1>
 
@@ -12,6 +10,15 @@
 
   <br>
 
+  <h2>Or, upload words with a .csv file.</h2>
+   <%= form_tag import_words_path, multipart: true do %>
+      <%= file_field_tag :file %>
+      <br>
+      <%= submit_tag "Import CSV" %>
+    <% end %>
+  <br>
+<hr>
+<h1>The Spelling Bee Words</h1>
   <table class="table table-bordered">
     <thead>
       <tr>
@@ -30,5 +37,4 @@
     </thead>
   </table>
   <br>
-  <%= link_to "Add Bee Words", newbee_path, class: "btn btn-outline-danger" %>
 </div>
