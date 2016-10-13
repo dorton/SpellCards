@@ -6,21 +6,5 @@
       <div> <h2>Spelling Words for Week of <%= @current_week.start_date.strftime('%B %d, %Y') %></h2></div>
     </div>
   </div>
-
-
-
-<div class="container">
-    <% @current_weeks_words.each do |word| %>
-      <div class="card">
-        <div class="front">
-          <%= image_tag word.pic %>
-        </div>
-        <div class="back">
-          <h3><%= word.letters %></h3>
-        </div>
-      </div>
-    <% end %>
-</div>
-
-
+    <%= render partial: "cards", locals: {words: @current_weeks_words} %>
 </div>

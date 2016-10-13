@@ -1,0 +1,42 @@
+
+<ul class="nav nav-tabs nav-justified">
+  <li class="active"><a data-toggle="tab" href="#flash">Flash Card Practice</a></li>
+  <li><a data-toggle="tab" href="#test">Test</a></li>
+</ul>
+<div class="tab-content">
+  <div id="flash" class="tab-pane fade in active">
+    <div class="container">
+        <% words.each do |word| %>
+          <div class="card_flash">
+            <div class="front">
+              <%= image_tag word.pic %>
+            </div>
+            <div class="back">
+              <h3><%= word.letters %></h3>
+            </div>
+          </div>
+        <% end %>
+    </div>
+  </div>
+  <div id="test" class="tab-pane fade">
+    <div class="container">
+        <% words.each do |word| %>
+        <div class="card_test" id="<%= word.id %>" data-word-text="<%= word.letters %>">
+            <div class="card_test_flip" id="<%= word.id %>" data-word-text="<%= word.letters %>">
+              <div class="front">
+                <%= image_tag word.pic %>
+              </div>
+            </div>
+            <div class="card_test_unflip">
+              <div class="back">
+                <form class="test_input" data-word-text="<%= word.letters %>">
+                  <input type="text" name="answer" autofocus>
+                  <input type="submit" class="btn btn-primary"><button type="button" class="btn btn-primary btn-warning btn-sml unflip_btn" id="<%= word.id %>">Unflip</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        <% end %>
+    </div>
+  </div>
+</div>

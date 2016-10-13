@@ -11,16 +11,8 @@
 
 
 <div class="container">
-    <% @randomwords.each do |word| %>
-      <div class="card">
-        <div class="front">
-          <%= image_tag word.pic %>
-        </div>
-        <div class="back">
-          <h3><%= word.letters %></h3>
-        </div>
-      </div>
-    <% end %>
+  <%= render partial: "cards", locals: {words: @randomwords} %>
+
 </div>
 
 <button type="button" id="refresh" class="btn btn-lg btn-block btn-warning">Get 6 New Words</button>

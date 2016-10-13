@@ -1,0 +1,46 @@
+$( document ).on('turbolinks:load', function() {
+
+    $(".card").flip({
+      speed: 200
+    });
+
+    $(".card_flash").flip({
+      speed: 200
+    });
+
+
+//card_test Flip
+  $(".card_test").flip({
+        trigger: 'manual',
+        speed: 200
+      });
+
+   $(".card_test_flip").on("click", function(){
+      var id = $(this).attr('id')
+      $("#" + id + ".card_test").flip(true);
+   });
+
+  $(".unflip_btn").on("click", function(){
+     var id = $(this).attr('id')
+     $("#" + id + ".card_test").flip(false);
+   });
+
+//submitHandler for the test_input function
+   var submitHandler = function(eventObject){
+     eventObject.preventDefault()
+      var correct_answer = $(this).attr('data-word-text')
+      window.form = $(this)
+      var submitted_answer = $(this)[0].answer.value
+      console.log(correct_answer)
+      console.log(submitted_answer)
+      console.log($(this).css("background-color"))
+  //checks if the text input value equals the data-word-text value
+      if(correct_answer === submitted_answer){
+          $(this).css("background-color", "green");
+      }else{
+        $(this).css("background-color", "red");
+      }
+    }
+
+   $(".test_input").submit(submitHandler);
+ });
