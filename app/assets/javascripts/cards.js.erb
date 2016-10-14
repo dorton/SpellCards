@@ -29,13 +29,15 @@ $( document ).on('turbolinks:load', function() {
    var submitHandler = function(eventObject){
      eventObject.preventDefault()
       var correct_answer = $(this).attr('data-word-text')
+      var formatted_answer = correct_answer.toLowerCase();
       window.form = $(this)
       var submitted_answer = $(this)[0].answer.value
+      var formatted_submitted = submitted_answer.toLowerCase();
       console.log(correct_answer)
       console.log(submitted_answer)
       console.log($(this).css("background-color"))
   //checks if the text input value equals the data-word-text value
-      if(correct_answer === submitted_answer){
+      if(formatted_answer === formatted_submitted){
           $(this).css("background-color", "green");
       }else{
         $(this).css("background-color", "red");
