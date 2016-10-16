@@ -46,7 +46,7 @@ class WordsController < ApplicationController
 
   def index
     @words = Word.all
-    @current_week = Week.where('end_date >= ?', Date.today).where('start_date <= ?', Date.today).first
+    @current_week = Week.where('end_date > ?', Date.today).where('start_date <= ?', Date.today).first
     @current_weeks_words = Word.where(week_id: @current_week.id)
   end
 
@@ -56,7 +56,7 @@ class WordsController < ApplicationController
 
   def new
     @word = Word.new
-    @current_week = Week.where('end_date >= ?', Date.today).where('start_date <= ?', Date.today)
+    @current_week = Week.where('end_date > ?', Date.today).where('start_date <= ?', Date.today).first
   end
 
   def edit
@@ -67,18 +67,21 @@ class WordsController < ApplicationController
     @word = Word.new(word_params)
     pic = GoogleCustomSearchApi.search(@word.letters, searchType: "image")
     @word.pic = pic.items.first.link
-    @word.save
-    redirect_to @word, notice: 'Word was successfully created.'
+    if @word.save
+      redirect_to @word, notice: 'Word was created.'
+    else
+      redirect_to new_word_path, notice: 'Word already present.'
+    end
   end
 
   def update
       @word.update(word_params)
-      redirect_to @word, notice: 'Word was successfully updated.'
+      redirect_to @word, notice: 'Word was updated.'
   end
 
   def destroy
     @word.destroy
-    redirect_to spellingbee_path, notice: 'Word was successfully destroyed.'
+    redirect_to spellingbee_path, notice: 'Word was destroyed.'
   end
 
   private

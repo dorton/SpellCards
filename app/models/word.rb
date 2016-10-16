@@ -1,5 +1,6 @@
 class Word < ApplicationRecord
   belongs_to :week, optional: true
+  validates :letters, uniqueness: true, presence: true
   require 'csv'
 
   def self.import(file)
