@@ -23,7 +23,7 @@ class WordsController < ApplicationController
 
   def spellingbee
     @word = Word.new
-    @spellingbeewords = Word.where(spelling_bee: true)
+    @spellingbeewords = Word.where(spelling_bee: true).sort_by{|i| i.letters}
   end
 
   def randombeewords
@@ -97,6 +97,6 @@ class WordsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def word_params
-      params.fetch(:word, {}).permit(:letters, :pic, :week_id, :spelling_bee)
+      params.fetch(:word, {}).permit(:letters, :pic, :week_id, :spelling_bee, :sound_url)
     end
 end
