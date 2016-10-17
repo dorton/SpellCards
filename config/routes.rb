@@ -10,6 +10,4 @@ Rails.application.routes.draw do
   get '/randombee', to: 'words#randombeewords', as: 'randombee'
   get '/newbee/new', to: 'words#newbee', as: 'newbee'
   post '/newbee', to: 'words#createbee'
-
-  post 'words/voice' => 'words#voice'
 end

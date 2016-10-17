@@ -7,7 +7,8 @@
 <br>
 <% if @word.spelling_bee? %>
   <%= link_to "Back to Spelling Bee List", spellingbee_path %>
-<% end %><br><br>
+<% end %>
+<br><br>
   <%= link_to 'Edit', edit_word_path(@word) %> |
   <%= link_to 'Back', words_path %> |
   <%= link_to "Delete", word_path(@word),
