@@ -7,6 +7,7 @@
   <div id="flash" class="tab-pane fade in active">
     <div class="container">
         <% words.each do |word| %>
+
           <div class="card_flash">
             <div class="front">
               <%= image_tag word.pic %>
@@ -14,7 +15,14 @@
             <div class="back">
               <h3><%= word.letters %></h3>
             </div>
+            <div class="action">
+              <audio id="audio_<%= word.id %>">
+                <source src=<%= word.sound_url %> type="audio/wav" />
+              </audio>
+              <a href="#"><i class="material-icons" onClick="document.getElementById('audio_<%= word.id %>').play(); return false;">volume_up</i></a>
+            </div>
           </div>
+
         <% end %>
     </div>
   </div>
@@ -34,6 +42,12 @@
                   <input type="submit" class="btn btn-primary"><button type="button" class="btn btn-primary btn-warning btn-sml unflip_btn" id="<%= word.id %>">Unflip</button>
                 </form>
               </div>
+            </div>
+            <div class="action">
+              <audio id="audio_<%= word.id %>">
+                <source src=<%= word.sound_url %> type="audio/wav" />
+              </audio>
+              <a href="#"><i class="material-icons" onClick="document.getElementById('audio_<%= word.id %>').play(); return false;">volume_up</i></a>
             </div>
           </div>
         <% end %>

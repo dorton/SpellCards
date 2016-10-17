@@ -68,6 +68,11 @@ class WordsController < ApplicationController
     pic = GoogleCustomSearchApi.search(@word.letters, searchType: "image")
     @word.pic = pic.items.first.link
     if @word.save
+      url = "http://www.dictionaryapi.com/api/v1/references/learners/xml/#{@word.letters}?key=166499da-1133-42ca-99cb-21e2c5a006a5"
+      encoded_url = URI.encode(url)
+      sound = Nokogiri::XML(open(encoded_url) {|f| f.read}).at('sound').text
+      url = "http://media.merriam-webster.com/soundc11/#{sound.first}/#{sound}"
+      @word.update_attributes(sound_url: url)
       redirect_to @word, notice: 'Word was created.'
     else
       redirect_to new_word_path, notice: 'Word already present.'
