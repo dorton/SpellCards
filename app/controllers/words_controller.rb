@@ -46,7 +46,7 @@ class WordsController < ApplicationController
   def index
     @words = Word.all
     @current_week = Week.where('end_date > ?', Date.today).where('start_date <= ?', Date.today).first
-    @current_weeks_words = Word.where(week_id: @current_week.id)
+    @current_weeks_words = Word.where(week_id: @current_week.id).shuffle
   end
 
 
