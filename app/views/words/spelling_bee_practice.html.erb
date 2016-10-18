@@ -1,0 +1,14 @@
+<div class="container">
+  <div class="main_header">
+    <div class="row">
+      <div> <h2>All <%= @allspellingbeewords.count %> Spelling Bee Words</h2></div>
+    </div>
+  </div>
+
+
+
+<div class="container">
+  <%= render partial: "cards", locals: {words: @allspellingbeewords} %>
+
+</div>
+</div>

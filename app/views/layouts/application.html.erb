@@ -33,12 +33,9 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <!-- <i class="material-icons">sort_by_alpha</i> -->
 
             <%= link_to '<span class="glyphicon glyphicon-education" aria-hidden="true"></span> | iSpellWords'.html_safe, root_path, class: "navbar-brand" %>
-            <!-- <a class="navbar-brand" href="#">Brand</a> -->
           </div>
-          <!-- Collect the nav links, forms, and other content for toggling -->
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <!-- <form class="navbar-form navbar-right">
                <div class="form-group" id="the-basics">
@@ -50,8 +47,9 @@
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Spelling Bee <span class="caret"></span></a>
                 <ul class="dropdown-menu">
-                  <li><%= link_to "All Spelling Bee Words", spellingbee_path %></li>
+                  <li><%= link_to "All Spelling Bee Word Table", spellingbee_path %></li>
                   <li><%= link_to "6 Random Spelling Bee Words", randombee_path %></li>
+                  <li><%= link_to "All Spelling Bee Word Practice", spelling_bee_practice_path %></li>
                 </ul>
               </li>
 
@@ -84,7 +82,8 @@
                   <ul class="dropdown-menu">
                     <li><%= link_to "All Weekly Words", wordlist_path %></li>
                     <li><%= link_to "6 Random Spelling Bee Words", randombee_path %></li>
-                    <li><%= link_to "All Spelling Bee Words", spellingbee_path %></li>
+                    <li><%= link_to "All Spelling Bee Word Practice", spelling_bee_practice_path %></li>
+                    <li><%= link_to "All Spelling Bee Word Table", spellingbee_path %></li>
                   </ul>
                 </li>
                 <li><%= link_to('Login', new_user_session_path)  %></li>
@@ -96,31 +95,6 @@
 
   <div class="container">
 
-
-<!-- <nav>
-  <div class="navbar">
-    <%= link_to '<i class="material-icons">sort_by_alpha</i>| iSpellWords'.html_safe, root_path, class: "brand-logo" %>
-    <a href="#" data-activates="mobile-demo" class="right button-collapse"><i class="material-icons">more_vert</i></a>
-    <ul class="right hide-on-med-and-down">
-      <li><a href="#"><i class="material-icons">search</i></a></li>
-        <li><a class="dropdown-button" href="#!" data-activates="dropdown1"><i class="material-icons right">view_module</i></a></li>
-        <ul id='dropdown1' class='dropdown-content'>
-          <li><%= link_to "All Words", wordlist_path %></li>
-          <li><%= link_to "Add New Words", new_word_path %></li>
-          <li class="divider"></li>
-          <li><h5>Weeks</h5></li>
-          <% Week.all.each do |week| %>
-            <li><%= link_to week.start_date, root_path %></li>
-          <% end %>
-        </ul>
-    </ul>
-    <ul class="side-nav" id="mobile-demo">
-        <li><a href="#"><i class="material-icons">search</i></a></li>
-        <li><%= link_to "All Words", wordlist_path %></li>
-        <li><%= link_to "Add New Words", new_word_path %></li>
-      </ul>
-  </div>
-</nav> -->
   <body>
     <p id="notice"><%= notice %></p>
     <%= yield %>

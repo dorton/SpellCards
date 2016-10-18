@@ -20,6 +20,10 @@ class WordsController < ApplicationController
     @words = Word.joins(:week).all
   end
 
+  def spelling_bee_practice
+    @allspellingbeewords = Word.where(spelling_bee: true).shuffle
+  end
+
   def spellingbee
     @word = Word.new
     @spellingbeewords = Word.where(spelling_bee: true).sort_by{|i| i.letters}
