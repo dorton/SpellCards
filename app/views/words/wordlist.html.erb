@@ -6,21 +6,26 @@
         <th>Word</th>
         <th>Pic</th>
         <th>Week of</th>
+        <% if user_signed_in? %>
         <th>Action</th>
+        <% end %>
       </tr>
       <% @words.each do |word| %>
       <tr>
         <td><%= link_to word.letters, word_path(word) %></td>
         <td><%= image_tag word.pic, class: "table_pic img-responsive img-thumbnail" %></td>
         <td><%= word.week.start_date.strftime('%B %d, %Y') %></td>
+        <% if user_signed_in? %>
         <td><%= link_to "Edit", edit_word_path(word), class: "btn btn-info" %>
         <%= link_to "Delete", word_path(word), class: "btn btn-danger",
                       method: :delete,
-                      data: { confirm: 'Are you sure?' }  %></td>
+                      data: { confirm: 'Are you sure?' }  %></td><% end %>
       </tr>
       <% end %>
     </thead>
   </table>
   <br>
+  <% if user_signed_in? %>
   <%= link_to "Add Words", new_word_path, class: "btn btn-info" %>
+  <% end %>
 </div>

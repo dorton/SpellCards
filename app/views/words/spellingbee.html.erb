@@ -3,6 +3,7 @@
 
 <div class="container">
   <br>
+  <% if user_signed_in? %>
   <h1>Add a New Words to the Spelling Bee List</h1>
 
 
@@ -18,6 +19,7 @@
       <%= submit_tag "Import CSV", class: "btn btn-info" %>
     <% end %>
   <br>
+  <% end %>
 <hr>
 <h1>The Spelling Bee - <%= @spellingbeewords.count %> Words</h1>
   <table class="table table-bordered">
@@ -25,16 +27,19 @@
       <tr>
         <th>Word</th>
         <th>Image</th>
+        <% if user_signed_in? %>
         <th>Action</th>
+        <% end %>
       </tr>
       <% @spellingbeewords.each do |word| %>
       <tr>
         <td><%= link_to word.letters, word_path(word) %></td>
         <td><%= image_tag word.pic, class: "table_pic img-responsive img-thumbnail" %></td>
+        <% if user_signed_in? %>
         <td><%= link_to "Edit", edit_word_path(word), class: "btn btn-info" %>
             <%= link_to "Delete", word_path(word), class: "btn btn-danger",
                       method: :delete,
-                      data: { confirm: 'Are you sure?' }  %></td>
+                      data: { confirm: 'Are you sure?' }  %></td><% end %>
       </tr>
       <% end %>
     </thead>

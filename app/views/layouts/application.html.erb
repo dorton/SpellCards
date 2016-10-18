@@ -35,9 +35,9 @@
             <%= link_to '<span class="glyphicon glyphicon-education" aria-hidden="true"></span> | iSpellWords'.html_safe, root_path, class: "navbar-brand" %>
             <!-- <a class="navbar-brand" href="#">Brand</a> -->
           </div>
-
           <!-- Collect the nav links, forms, and other content for toggling -->
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <% if user_signed_in? %>
             <ul class="nav navbar-nav navbar-right">
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Spelling Bee <span class="caret"></span></a>
@@ -66,7 +66,17 @@
                   <li><%= link_to "Create a New Week for Weekly Words", new_week_path %></li>
                 </ul>
               </li>
+              <li>
+                <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
+              </li>
+              <% else %>
+              <ul class="nav navbar-nav navbar-right">
+                <li><%= link_to "All Weekly Words", wordlist_path %></li>
+                <li><%= link_to "6 Random Spelling Bee Words", randombee_path %></li>
+                <li><%= link_to "All Spelling Bee Words", spellingbee_path %></li>
+                <li><%= link_to('Login', new_user_session_path)  %></li>
             </ul>
+            <% end %>
           </div><!-- /.navbar-collapse -->
         </div><!-- /.container-fluid -->
       </nav>

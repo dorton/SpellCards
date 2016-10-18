@@ -1,8 +1,7 @@
 class WordsController < ApplicationController
-  skip_before_action :verify_authenticity_token, only: :voice
   before_action :set_word, only: [:show, :edit, :update, :destroy]
-  after_filter :set_header, only: :voice
-  include Webhookable
+  before_action :authenticate_user!, :only => [:new, :create, :newbee, :createbee, :edit, :update, :destroy]
+
 
   def import
     Word.import(params[:file])

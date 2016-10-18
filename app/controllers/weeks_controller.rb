@@ -1,5 +1,7 @@
 class WeeksController < ApplicationController
   before_action :set_week, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, :except => [:show, :index]
+
 
   # GET /weeks
   # GET /weeks.json
