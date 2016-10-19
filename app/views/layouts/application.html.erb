@@ -45,7 +45,7 @@
                           <%= form_tag(search_words_path, method: :get, id: "search-form") do %>
                           <%= text_field_tag :search, params[:search], placeholder: "Search for...", class: 'form-control typeahead' %>
                     <span class="input-group-btn">
-                         <%= submit_tag "Go", class: 'btn btn-success', name: nil %>
+                         <%= submit_tag "Go", class: 'btn btn-default', name: nil %>
                     </span>
                           <% end %>
 
