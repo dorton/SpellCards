@@ -3,6 +3,11 @@ class WordsController < ApplicationController
   before_action :authenticate_user!, :only => [:new, :create, :newbee, :createbee, :edit, :update, :destroy]
 
 
+  def search
+    @words = Word.all.order('letters DESC')
+    @words = @words.search(params[:search]) if params[:search].present?
+  end
+
   def import
     Word.import(params[:file])
     redirect_to spellingbee_path, notice: "Spelling Bee Words imported."
@@ -18,15 +23,21 @@ class WordsController < ApplicationController
 
   def wordlist
     @words = Word.joins(:week).all
+    @words = @words.search(params[:search]) if params[:search].present?
+
   end
 
   def spelling_bee_practice
     @allspellingbeewords = Word.where(spelling_bee: true).shuffle
+    @allspellingbeewords = Word.where(spelling_bee: true).search(params[:search]) if params[:search].present?
+
   end
 
   def spellingbee
     @word = Word.new
     @spellingbeewords = Word.where(spelling_bee: true).sort_by{|i| i.letters}
+    @spellingbeewords = Word.where(spelling_bee: true).search(params[:search]) if params[:search].present?
+
   end
 
   def randombeewords
@@ -51,6 +62,7 @@ class WordsController < ApplicationController
     @words = Word.all
     @current_week = Week.where('end_date > ?', Date.today).where('start_date <= ?', Date.today).first
     @current_weeks_words = Word.where(week_id: @current_week.id).shuffle
+    @current_weeks_words = Word.search(params[:search]) if params[:search].present?
   end
 
 
@@ -100,6 +112,6 @@ class WordsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def word_params
-      params.fetch(:word, {}).permit(:letters, :pic, :week_id, :spelling_bee, :sound_url)
+      params.fetch(:word, {}).permit(:letters, :pic, :week_id, :spelling_bee, :sound_url, :search)
     end
 end

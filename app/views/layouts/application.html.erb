@@ -37,11 +37,26 @@
             <%= link_to '<span class="glyphicon glyphicon-education" aria-hidden="true"></span> | iSpellWords'.html_safe, root_path, class: "navbar-brand" %>
           </div>
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <!-- <form class="navbar-form navbar-right">
-               <div class="form-group" id="the-basics">
-                 <input type="text" class="form-control typeahead" placeholder="Search All Words">
-               </div>
-             </form> -->
+            <form class="navbar-form navbar-right">
+              <div class="col-lg-6">
+                <div class="input-group">
+
+
+                          <%= form_tag(search_words_path, method: :get, id: "search-form") do %>
+                          <%= text_field_tag :search, params[:search], placeholder: "Search for...", class: 'form-control typeahead' %>
+                    <span class="input-group-btn">
+                         <%= submit_tag "Go", class: 'btn btn-success', name: nil %>
+                    </span>
+                          <% end %>
+
+
+
+                </div>
+                 <!-- <div class="input-group search-bar">
+                   <input type="text" class="form-control typeahead" placeholder="Search for...">
+                 </div>< /input-group -->
+               </div><!-- /.col-lg-6 -->
+             </form>
             <% if user_signed_in? %>
             <ul class="nav navbar-nav navbar-right">
               <li class="dropdown">

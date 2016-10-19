@@ -4,6 +4,10 @@ class Word < ApplicationRecord
   require 'csv'
 
 
+  def self.search(search)
+    where("letters ILIKE ?", "%#{search}%") 
+  end
+
   def self.import(file)
     word_array = CSV.read(file.path, headers: true)
     word_array.each do |word|

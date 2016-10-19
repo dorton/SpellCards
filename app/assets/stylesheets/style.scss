@@ -12,6 +12,10 @@
     -moz-boz-sizing: inherit;
 }
 
+.input-group-btn:last-child>.btn, .input-group-btn:last-child>.btn-group {
+    margin-bottom: 4px;
+}
+
 body {
     // background: #ccc;
     font-family: 'Roboto', sans-serif!important;

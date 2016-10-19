@@ -34,12 +34,27 @@ $( document ).on('turbolinks:load', function() {
     $('.typeahead').typeahead({
     hint: true,
     highlight: true,
-    minLength: 1
+    minLength: 1,
+    generateOnLoad: true
     },
     {
     name: 'states',
     source: substringMatcher(words)
     });
 
+
+    // var submitHandler = function(eventObject){
+    //   // eventObject.preventDefault()
+    //    window.form = $(this)
+    //    var submitted_answer = $(this)[0].answer.value
+    //    console.log(correct_answer)
+    //  }
+    //
+    // $(".search-bar").submit(submitHandler);
+
+    // $( ".search-bar" ).submit(function( event ) {
+    //   alert( "Handler for .submit() called." );
+    //   event.preventDefault();
+    // });
 
 });
