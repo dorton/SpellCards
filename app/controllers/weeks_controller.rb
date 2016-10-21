@@ -12,9 +12,12 @@ class WeeksController < ApplicationController
   # GET /weeks/1
   # GET /weeks/1.json
   def show
-    @current_week = @week
     # @current_week = Week.where('end_date > ?', Date.today).where('start_date <= ?', Date.today).first
-    @current_weeks_words = @current_week.words
+    @current_weeks_words = @week.words
+    @first_week = Week.first
+    @last_week = Week.last
+    @previous_week = @week.previous
+    @next_week = @week.next
   end
 
   # GET /weeks/new
