@@ -1,4 +1,9 @@
-<p id="notice"><%= notice %></p>
 
-<%= link_to 'Edit', edit_week_path(@week) %> |
-<%= link_to 'Back', weeks_path %>
+<div class="container">
+  <div class="main_header">
+    <div class="row">
+      <div> <h2>Spelling Words for Week of <%= @current_week.start_date.strftime('%B %d, %Y') %></h2></div>
+    </div>
+  </div>
+    <%= render partial: "words/cards", locals: {words: @current_weeks_words} %>
+</div>

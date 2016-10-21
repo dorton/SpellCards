@@ -74,7 +74,7 @@
                   <li><%= link_to "All Weekly Words", wordlist_path %></li>
                   <li role="separator" class="divider"></li>
                   <% Week.all.each do |week| %>
-                    <li><%= link_to week.start_date.strftime('%B %d, %Y'), root_path %></li>
+                    <li><%= link_to week.start_date.strftime('%B %d, %Y'), week_path(week) %></li>
                   <% end %>
                 </ul>
               </li>
