@@ -22,7 +22,7 @@ class WordsController < ApplicationController
   end
 
   def wordlist
-    @words = Word.joins(:week).all
+    @words = Word.joins(:week).order("weeks.start_date DESC").all
     @words = @words.search(params[:search]) if params[:search].present?
 
   end
