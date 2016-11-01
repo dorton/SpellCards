@@ -2,7 +2,7 @@
 <div class="container">
   <div class="main_header">
     <div class="row">
-      <div> <h2> <% unless @week == @first_week %> <%= link_to '<i class="material-icons">skip_previous</i>'.html_safe, week_path(@previous_week) %><% end %>Spelling Words for Week of <%= @week.start_date.strftime('%B %d, %Y') %>  <% unless @week == @last_week %><%= link_to '<i class="material-icons">skip_next</i>'.html_safe, week_path(@next_week) %><% end %> </h2></div>
+      <div class="weeks"><h2> <% unless @week == @first_week %> <%= link_to '<i class="material-icons">skip_previous</i>'.html_safe, week_path(@previous_week) %><% end %>Spelling Words for Week of <%= @week.start_date.strftime('%B %d, %Y') %>  <% unless @week == @last_week %><%= link_to '<i class="material-icons">skip_next</i>'.html_safe, week_path(@next_week) %><% end %> </h2></div>
     </div>
   </div>
     <%= render partial: "words/cards", locals: {words: @current_weeks_words} %>

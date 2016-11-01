@@ -13,7 +13,8 @@ class WeeksController < ApplicationController
   # GET /weeks/1.json
   def show
     # @current_week = Week.where('end_date > ?', Date.today).where('start_date <= ?', Date.today).first
-    @current_weeks_words = @week.words
+    @current_weeks_words = @week.words.shuffle
+    @current_weeks_words = Word.search(params[:search]) if params[:search].present?
     @first_week = Week.first
     @last_week = Week.last
     @previous_week = @week.previous

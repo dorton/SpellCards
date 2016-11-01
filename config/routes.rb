@@ -8,7 +8,7 @@ Rails.application.routes.draw do
     end
   end
   resources :weeks
-  root to: 'weeks#show', id: "#{Week.where('end_date > ?', Date.today).where('start_date <= ?', Date.today).first.id}"
+  root to: 'weeks#show', id: "#{Week.last.id}"
 
   # get '/search', to: 'words#search', as: 'search'
 
