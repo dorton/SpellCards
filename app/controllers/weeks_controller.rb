@@ -72,6 +72,6 @@ class WeeksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def week_params
-      params.fetch(:week, {}).permit(:start_date, :end_date)
+      params.fetch(:week, {}).permit(:start_date, :end_date, { :word_ids => [] })
     end
 end

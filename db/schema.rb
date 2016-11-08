@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161018004914) do
+ActiveRecord::Schema.define(version: 20161108112551) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,6 +34,15 @@ ActiveRecord::Schema.define(version: 20161018004914) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  create_table "week_words", force: :cascade do |t|
+    t.integer  "week_id"
+    t.integer  "word_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["week_id"], name: "index_week_words_on_week_id", using: :btree
+    t.index ["word_id"], name: "index_week_words_on_word_id", using: :btree
+  end
+
   create_table "weeks", force: :cascade do |t|
     t.date     "start_date"
     t.date     "end_date"
@@ -51,4 +60,6 @@ ActiveRecord::Schema.define(version: 20161018004914) do
     t.string   "sound_url"
   end
 
+  add_foreign_key "week_words", "weeks"
+  add_foreign_key "week_words", "words"
 end

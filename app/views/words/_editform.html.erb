@@ -4,7 +4,7 @@
   <%= f.input :letters, :label => "Word" %>
   <%= f.input :pic, :label => "Picture URL" %>
   <%= f.input :spelling_bee, :label => "Spelling Bee Word?" %>
-  <%= f.association :week, :label => "Choose week if a weekly word.", collection: Week.order(:start_date), prompt: "Choose a Week", label_method: :start_date, value_method: :id, include_blank: false  %>
+  <%= f.association :weeks, :label => "Choose week if a weekly word.", collection: Week.order(:start_date), prompt: "Choose a Week", label_method: :start_date, value_method: :id, include_blank: false  %>
   <%= f.button :submit, class: "btn black"  %>
 <% end %>
 </div>
