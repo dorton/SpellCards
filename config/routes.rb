@@ -10,7 +10,12 @@ Rails.application.routes.draw do
   resources :weeks
   root to: 'weeks#show', id: "#{Week.last.id}"
 
-  # get '/search', to: 'words#search', as: 'search'
+  namespace :api do
+    namespace :v1 do
+      resources :weeks
+      resources :words
+    end
+  end
 
   get '/wordlist', to: 'words#wordlist', as: 'wordlist'
   get '/spellingbee', to: 'words#spellingbee', as: 'spellingbee'

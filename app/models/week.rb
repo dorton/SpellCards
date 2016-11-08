@@ -1,5 +1,6 @@
 class Week < ApplicationRecord
-  has_many :words
+  has_many :words, through: :week_words
+  has_many :week_words
 
   def show_date
     date.strftime('%B %d, %Y')

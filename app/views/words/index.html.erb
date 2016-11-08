@@ -1,9 +1,32 @@
 
 <div class="container">
-  <div class="main_header">
-    <div class="row">
-      <div> <h2>Spelling Words for Week of <%= @current_week.start_date.strftime('%B %d, %Y') %></h2></div>
-    </div>
-  </div>
-    <%= render partial: "cards", locals: {words: @current_weeks_words} %>
+  <table class="table table-bordered">
+        <tr>
+          <th>Week</th>
+          <th>Pic</th>
+          <th>Word</th>
+          <th>Spelling Bee Word?</th>
+          <th colspan="2">Action</th>
+        </tr>
+      <% Word.all.each do |word| %>
+        <tr>
+          <td>
+            <% word.weeks.each do |week| %>
+              <%= week.start_date.strftime('%m/%d/%Y') %>
+            <% end %>
+          </td>
+          <td><%= image_tag word.pic, class: "table_pic img-responsive img-thumbnail" %></td>
+          <td><%= link_to word.letters, word_path(word) %></td>
+          <td>
+            <% if word.spelling_bee? %>
+              ✓
+            <% end %>
+          </td>
+        <% if user_signed_in? %>
+          <td><%= link_to "Edit", edit_word_path(word), class: "btn btn-info" %></td>
+          <td><%= link_to "Delete", word_path(word), class: "btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' }  %></td>
+        <% end %>
+        </tr>
+      <% end %>
+  </table>
 </div>

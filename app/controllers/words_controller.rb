@@ -22,7 +22,7 @@ class WordsController < ApplicationController
   end
 
   def wordlist
-    @words = Word.joins(:week).order("weeks.start_date DESC").all
+    @words = Word.joins(:weeks).order("weeks.start_date DESC")
     @words = @words.search(params[:search]) if params[:search].present?
 
   end
@@ -112,6 +112,6 @@ class WordsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def word_params
-      params.fetch(:word, {}).permit(:letters, :pic, :week_id, :spelling_bee, :sound_url, :search)
+      params.fetch(:word, {}).permit(:letters, :pic, { :week_ids => [] }, :spelling_bee, :sound_url, :search)
     end
 end

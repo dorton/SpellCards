@@ -1,11 +1,12 @@
 class Word < ApplicationRecord
-  belongs_to :week, optional: true
+  has_many :weeks, through: :week_words
+  has_many :week_words
   validates :letters, uniqueness: true, presence: true
   require 'csv'
 
 
   def self.search(search)
-    where("letters ILIKE ?", "%#{search}%") 
+    where("letters ILIKE ?", "%#{search}%")
   end
 
   def self.import(file)
