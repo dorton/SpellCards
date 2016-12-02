@@ -6,7 +6,9 @@
           <tr>
             <th>Pic</th>
             <th>Word</th>
-            <th colspan="2">Action</th>
+            <% if user_signed_in? %>
+              <th colspan="2">Action</th>
+            <% end %>
           </tr>
         <% week.words.each do |word| %>
           <tr>
