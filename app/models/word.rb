@@ -1,5 +1,5 @@
 class Word < ApplicationRecord
-  has_many :weeks, through: :week_words
+  has_many :weeks, through: :week_words, dependent: :destroy
   has_many :week_words
   validates :letters, uniqueness: true, presence: true
   require 'csv'
