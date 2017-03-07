@@ -6,15 +6,20 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+def create_week
+  Week.create(start_date: '2016-10-09', end_date: '2016-10-16')
+end
 
-week = Week.create(start_date: '2016-10-09', end_date: '2016-10-16')
+create_week
 
-words = ['leg', 'dog', 'pen', 'duck', 'nest', 'den']
+words = ['glad', 'flag', 'play', 'black', 'clock', 'clay', 'fly', 'blue']
+
+
 
 words.each do |word|
   nuword = Word.new
   nuword.letters = word
-  pic = GoogleCustomSearchApi.search(word, searchType: "image")
+  pic = GoogleCustomSearchApi.search(word + " clipart", searchType: "image" )
   nuword.pic = pic.items.first.link
   nuword.save
   Week.last.words << nuword
