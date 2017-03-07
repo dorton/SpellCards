@@ -1,6 +1,6 @@
 
 <div class="container">
-  <% Week.all.each do |week| %>
+  <% Week.all.order(start_date: :desc).each do |week| %>
     <h2>Week of <%= week.start_date.strftime('%m/%d/%Y') %></h2>
     <table class="table table-bordered">
           <tr>
