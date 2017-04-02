@@ -80,7 +80,7 @@ class WordsController < ApplicationController
 
   def create
     @word = Word.new(word_params)
-    pic = GoogleCustomSearchApi.search(@word.letters + " clipart", searchType: "image")
+    pic = GoogleCustomSearchApi.search(@word.letters + " clipart -clipart-library", searchType: "image")
     @word.pic = pic.items.first.link
     if @word.save
       url = "http://www.dictionaryapi.com/api/v1/references/learners/xml/#{@word.letters}?key=166499da-1133-42ca-99cb-21e2c5a006a5"
